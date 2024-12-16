@@ -8,3 +8,13 @@ D:\PGU\лабы\СиАОД\Laba_12\Laba_12\obj\Debug\Laba_12.csproj.GenerateReso
 D:\PGU\лабы\СиАОД\Laba_12\Laba_12\obj\Debug\Laba_12.csproj.CoreCompileInputs.cache
 D:\PGU\лабы\СиАОД\Laba_12\Laba_12\obj\Debug\Laba_12.exe
 D:\PGU\лабы\СиАОД\Laba_12\Laba_12\obj\Debug\Laba_12.pdb
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\bin\Debug\Laba_12.exe.config
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\bin\Debug\Laba_12.exe
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\bin\Debug\Laba_12.pdb
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.csproj.AssemblyReference.cache
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.Form1.resources
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.Properties.Resources.resources
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.csproj.GenerateResource.cache
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.csproj.CoreCompileInputs.cache
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.exe
+C:\Users\royal\Source\Repos\Laba_13\Laba_12\Laba_12\obj\Debug\Laba_12.pdb
