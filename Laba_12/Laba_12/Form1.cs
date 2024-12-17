@@ -12,7 +12,8 @@ namespace Laba_12
 {
     public partial class Form1 : Form
     {
-        String[] arraySortNames = { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
+        String[] arraySortNames = new String[] { "Обмен", "Выбор", "Включение", "Шелла", "Быстрая", "Линейная", "Встроенная" };
+        const int ROWS_COUNT = 7;
         int arraySize;
         int[] array;
 
@@ -23,31 +24,81 @@ namespace Laba_12
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.RowCount = 7;
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+            dataGridView1.RowCount = ROWS_COUNT;
+            for (int i = 0; i < ROWS_COUNT; i++)
             {
                 dataGridView1.Rows[i].Cells[1].Value = arraySortNames[i];
+                dataGridView1.Rows[i].Cells[0].Value = false;
             }
         }
+
         private void buttonSort_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
             arraySize = (int)numericUpDown_arraySize.Value;
             array = new int[arraySize];
-            int time = 4;
-            int permutations = 3;
-            int comparisons = 2;
             for (int i = 0; i < array.Length; i++) array[i] = rnd.Next(1, 10);
-            InfoSort sortDirectSelection = SortDirectSelection(array);
-            dataGridView1.Rows[1].Cells[time].Value = sortDirectSelection.Time;
-            dataGridView1.Rows[1].Cells[permutations].Value = sortDirectSelection.Permutations;
-            dataGridView1.Rows[1].Cells[comparisons].Value = sortDirectSelection.Comparisons;
+
+            for (int i = 0; i < ROWS_COUNT; i++)
+            {
+                if ((bool)dataGridView1.Rows[i].Cells[0].Value)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            {
+                                addValuesTable(BubbleSort(array), i);
+                                break;
+                            }
+                        case 1:
+                            {
+                                addValuesTable(SortDirectSelection(array), i);
+                                break;
+                            }
+                        default: break;
+                    }
+                }
+            }
+        }
+        public InfoSort BubbleSort(int[] array)
+        {
+            int comparisons = 0;
+            int permutations = 0;
+
+            // Создаётся копия массива, дабы не сортировать исходный.
+            int[] arrayCopy = new int[array.Length];
+            Array.Copy(array, arrayCopy, array.Length);
+            int StartTime = Environment.TickCount;
+            {
+                bool swapped;
+                for (int i = 0; i < arrayCopy.Length - 1; i++)
+                {
+                    swapped = false;
+                    for (int j = 0; j < arrayCopy.Length - i - 1; j++)
+                    {
+                        if (arrayCopy[j] > arrayCopy[j + 1])
+                        {
+                            int temp = arrayCopy[j];
+                            arrayCopy[j] = arrayCopy[j + 1];
+                            arrayCopy[j + 1] = temp;
+                            swapped = true;
+                            permutations++;
+                        }
+                        comparisons++;
+                    }
+                    // Если на каком-то проходе не было обменов, массив отсортирован
+                    if (!swapped)
+                        break;
+                }
+                int ResultTime = Environment.TickCount - StartTime;
+                return new InfoSort { Time = ResultTime, Comparisons = comparisons, Permutations = permutations };
+            }
         }
 
         public InfoSort SortDirectSelection(int[] _arr)
         {
-            int comparisons = 0;
-            int permutations = 0;
+            int comparisons = 0; // Кол-во сравнений.
+            int permutations = 0; // Кол-во перестановок.
 
             int[] arr = new int[_arr.Length]; // Создаётся копия массива, дабы не сортировать исходный.
             for (int i = 0; i < arr.Length; i++)
@@ -66,19 +117,26 @@ namespace Laba_12
                         if (arr[j] < arr[minIndex])
                         {
                             minIndex = j;
-                            comparisons++;
                         }
+                        comparisons++;
                     }
-                    
+
                     // Swap.
                     int temp = arr[i];
                     arr[i] = arr[minIndex];
                     arr[minIndex] = temp;
-                    permutations++; 
+                    permutations++;
                 }
             }
             int ResultTime = Environment.TickCount - StartTime;
-            return new InfoSort { Time = ResultTime, Comparisons = comparisons,  Permutations = permutations};
+            return new InfoSort { Time = ResultTime, Comparisons = comparisons, Permutations = permutations };
+        }
+
+        public void addValuesTable(InfoSort sort, int index)
+        {
+            dataGridView1.Rows[index].Cells[4].Value = sort.Time;
+            dataGridView1.Rows[index].Cells[3].Value = sort.Permutations;
+            dataGridView1.Rows[index].Cells[2].Value = sort.Comparisons;
         }
 
         private void button1_Click_1(object sender, EventArgs e)

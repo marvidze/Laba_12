@@ -156,7 +156,7 @@
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Ayupov 23VP1";
+            this.Text = "Ipatov V.M. 23VP1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_arraySize)).EndInit();
